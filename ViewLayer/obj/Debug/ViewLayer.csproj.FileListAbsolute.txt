@@ -1,0 +1,17 @@
+C:\Users\pedro\documents\visual studio 2013\Projects\SysBusiness\ViewLayer\bin\Debug\ViewLayer.dll
+C:\Users\pedro\documents\visual studio 2013\Projects\SysBusiness\ViewLayer\bin\Debug\ViewLayer.pdb
+C:\Users\pedro\documents\visual studio 2013\Projects\SysBusiness\ViewLayer\bin\Debug\BusinessLayer.dll
+C:\Users\pedro\documents\visual studio 2013\Projects\SysBusiness\ViewLayer\bin\Debug\DataLayer.dll
+C:\Users\pedro\documents\visual studio 2013\Projects\SysBusiness\ViewLayer\bin\Debug\BusinessLayer.pdb
+C:\Users\pedro\documents\visual studio 2013\Projects\SysBusiness\ViewLayer\bin\Debug\DataLayer.pdb
+C:\Users\pedro\documents\visual studio 2013\Projects\SysBusiness\ViewLayer\obj\Debug\ViewLayer.csprojResolveAssemblyReference.cache
+C:\Users\pedro\documents\visual studio 2013\Projects\SysBusiness\ViewLayer\obj\Debug\ViewLayer.frmCategory.resources
+C:\Users\pedro\documents\visual studio 2013\Projects\SysBusiness\ViewLayer\obj\Debug\ViewLayer.csproj.GenerateResource.Cache
+C:\Users\pedro\documents\visual studio 2013\Projects\SysBusiness\ViewLayer\obj\Debug\ViewLayer.dll
+C:\Users\pedro\documents\visual studio 2013\Projects\SysBusiness\ViewLayer\obj\Debug\ViewLayer.pdb
+C:\Users\pedro\documents\visual studio 2013\Projects\SysBusiness\ViewLayer\bin\Debug\ViewLayer.dll.config
+C:\Users\pedro\documents\visual studio 2013\Projects\SysBusiness\ViewLayer\obj\Debug\ViewLayer.frmPresentation.resources
+C:\Users\pedro\documents\visual studio 2013\Projects\SysBusiness\ViewLayer\obj\Debug\ViewLayer.frmProduct.resources
+C:\Users\pedro\documents\visual studio 2013\Projects\SysBusiness\ViewLayer\obj\Debug\ViewLayer.Properties.Resources.resources
+C:\Users\pedro\documents\visual studio 2013\Projects\SysBusiness\ViewLayer\obj\Debug\ViewLayer.frmSearchCategory.resources
+C:\Users\pedro\documents\visual studio 2013\Projects\SysBusiness\ViewLayer\obj\Debug\ViewLayer.frmSupplier.resources
