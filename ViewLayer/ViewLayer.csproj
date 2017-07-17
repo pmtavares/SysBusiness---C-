@@ -53,6 +53,18 @@
     <Compile Include="frmCategory.Designer.cs">
       <DependentUpon>frmCategory.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPresentation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,6 +82,12 @@
     </Compile>
     <Compile Include="frmSearchCategory.Designer.cs">
       <DependentUpon>frmSearchCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmStaff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmStaff.Designer.cs">
+      <DependentUpon>frmStaff.cs</DependentUpon>
     </Compile>
     <Compile Include="frmSupplier.cs">
       <SubType>Form</SubType>
@@ -99,6 +117,12 @@
     <EmbeddedResource Include="frmCategory.resx">
       <DependentUpon>frmCategory.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmPresentation.resx">
       <DependentUpon>frmPresentation.cs</DependentUpon>
     </EmbeddedResource>
@@ -107,6 +131,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmSearchCategory.resx">
       <DependentUpon>frmSearchCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmStaff.resx">
+      <DependentUpon>frmStaff.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSupplier.resx">
       <DependentUpon>frmSupplier.cs</DependentUpon>
@@ -134,9 +161,23 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\1481080190_deliverables.png" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\noImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1481080265_shopping_cart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1481080293_Money.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1481080316_system-search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\login.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

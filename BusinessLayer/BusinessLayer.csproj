@@ -42,6 +42,7 @@
     <Compile Include="BCategory.cs" />
     <Compile Include="BPresentation.cs" />
     <Compile Include="BProduct.cs" />
+    <Compile Include="BStaff.cs" />
     <Compile Include="BSupplier.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

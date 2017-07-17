@@ -9,18 +9,16 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLayer;
 
-
 namespace ViewLayer
 {
-    public partial class frmSupplier : Form
+    public partial class frmStaff : Form
     {
-
         private bool eNew = false;
         private bool eEdit = false;
-        public frmSupplier()
+        public frmStaff()
         {
             InitializeComponent();
-            this.ttMessage.SetToolTip(this.txtCompany, "Insert the name of supplier");
+            this.ttMessage.SetToolTip(this.txtName, "Insert the name of staff");
         }
 
         //Show confirmation message
@@ -35,19 +33,21 @@ namespace ViewLayer
             MessageBox.Show(message, "Business System", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        //
         private void Clean()
         {
             this.txtSearch.Text = string.Empty;
             this.txtId.Text = string.Empty;
             this.txtAddress.Text = string.Empty;
-            this.txtCompany.Text = string.Empty;
+            this.txtName.Text = string.Empty;
             this.txtEmail.Text = string.Empty;
             this.txtDocNumber.Text = string.Empty;
-            this.txtUrl.Text = string.Empty;
+            this.txtPhone.Text = string.Empty;
             this.txtDocNumber.Text = string.Empty;
-            this.cbComercialSector.Text = string.Empty; ;
-            this.cbDocumentType.Text = string.Empty;
+            this.txtSurname.Text = string.Empty;
+            this.cbGender.Text = string.Empty; ;
+            this.cbAccess.Text = string.Empty;
+            this.txtUsername.Text = string.Empty;
+            this.txtPassword.Text = string.Empty;
         }
 
 
@@ -56,12 +56,15 @@ namespace ViewLayer
         {
             this.txtAddress.ReadOnly = !value;
             this.txtDocNumber.ReadOnly = !value;
-            this.txtUrl.ReadOnly = !value;
+            this.txtPhone.ReadOnly = !value;
             this.txtDocNumber.ReadOnly = !value;
-            this.cbComercialSector.Enabled = value;
-            this.cbDocumentType.Enabled = value;
-            this.txtCompany.ReadOnly = !value;
+            this.txtPassword.ReadOnly = !value;
+            this.cbAccess.Enabled = value;
+            this.cbGender.Enabled = value;
+            this.txtName.ReadOnly = !value;
+            this.txtSurname.ReadOnly = !value;
             this.txtEmail.ReadOnly = !value;
+            this.dtDate.Enabled = value;
         }
 
         private void Enabledbuttons()
@@ -94,45 +97,59 @@ namespace ViewLayer
 
         private void ShowValues()
         {
-            this.dataList.DataSource = BSupplier.ShowValues();
+            this.dataList.DataSource = BStaff.ShowValues();
             this.HideCollumns();
             lblTotal.Text = Convert.ToString(dataList.Rows.Count) + " registers found";
         }
         private void SearchName()
         {
-            this.dataList.DataSource = BSupplier.SearchName(this.txtSearch.Text);
+            this.dataList.DataSource = BStaff.SearchName(this.txtSearch.Text);
             this.HideCollumns();
             lblTotal.Text = Convert.ToString(dataList.Rows.Count) + " registers found";
         }
 
         private void SearchDocument()
         {
-            this.dataList.DataSource = BSupplier.SearchDocument(this.txtSearch.Text);
+            this.dataList.DataSource = BStaff.SearchDocument(this.txtSearch.Text);
             this.HideCollumns();
             lblTotal.Text = Convert.ToString(dataList.Rows.Count) + " registers found";
         }
 
-        private void frmSupplier_Load(object sender, EventArgs e)
+        private void frmStaff_Load(object sender, EventArgs e)
         {
-            this.categoryTableAdapter.Fill(this.dbBusinessDataSet.category);
+            //this.categoryTableAdapter.Fill(this.dbBusinessDataSet.category);
             this.Top = 0;
             this.Left = 0;
             this.ShowValues();
             this.EnabledField(false);
             this.Enabledbuttons();
             this.cbSearch.SelectedIndex = 0;
-            this.cbComercialSector.SelectedIndex = 0;
-            this.cbDocumentType.SelectedIndex = 0;
-        }
-
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            this.SearchName();
+            this.cbSearch.SelectedIndex = 0;
+            this.cbAccess.SelectedIndex = 0;
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            this.SearchName();
+            if (this.cbSearch.Text.Equals("Name"))
+            {
+                this.SearchName();
+            }
+            else if (this.cbSearch.Text.Equals("Document"))
+            {
+                this.SearchDocument();
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            if (this.cbSearch.Text.Equals("Name"))
+            {
+                this.SearchName();
+            }
+            else if (this.cbSearch.Text.Equals("Document"))
+            {
+                this.SearchDocument();
+            }
         }
 
         private void btnNew_Click(object sender, EventArgs e)
@@ -142,28 +159,8 @@ namespace ViewLayer
             this.Enabledbuttons();
             this.Clean();
             this.EnabledField(true);
-            this.txtCompany.Focus();
+            this.txtName.Focus();
             this.txtId.Enabled = false;
-        }
-
-        private void txtSearch_TextChanged_1(object sender, EventArgs e)
-        {
-            if(this.cbSearch.Text.Equals("Company"))
-            {
-                this.SearchName();
-            }
-            else if(this.cbSearch.Text.Equals("Document"))
-            {
-                this.SearchDocument();
-            }
-           
-            //
-        }
-
-        private void btnSearch_Click_1(object sender, EventArgs e)
-        {
-            //this.SearchName();
-            this.SearchDocument();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -171,25 +168,36 @@ namespace ViewLayer
             try
             {
                 string resp = "";
-                if (txtCompany.Text == string.Empty)
+                if (txtName.Text == string.Empty)
                 {
                     MessageError("Fill the fields");
-                    errorIcon.SetError(txtCompany, "Insert the Company's name");
+                    errorIcon.SetError(txtName, "Insert the staff's name");
 
                 }
                 else
                 {
                     if (this.eNew)
                     {
-                        resp = BSupplier.Insert(this.txtCompany.Text, this.cbComercialSector.Text,
-            this.cbDocumentType.Text, this.txtDocNumber.Text, this.txtAddress.Text, "1234", this.txtEmail.Text, this.txtUrl.Text
+                        resp = BStaff.Insert(
+                            this.txtName.Text.Trim().ToUpper(), 
+                            this.txtSurname.Text, 
+                            this.cbGender.Text, 
+                            this.dtDate.Value,
+                            this.txtDocNumber.Text, 
+                            this.txtAddress.Text, 
+                            this.txtPhone.Text, 
+                            this.txtEmail.Text, 
+                            this.cbAccess.Text,
+                            this.txtUsername.Text, 
+                            this.txtPassword.Text
                             );
                     }
                     else
                     {
-                        resp = BSupplier.Edit(Convert.ToInt32(this.txtId.Text),
-                            this.txtCompany.Text, this.cbComercialSector.Text,
-            this.cbDocumentType.Text, this.txtDocNumber.Text.Trim(), this.txtAddress.Text, "1234", this.txtEmail.Text, this.txtUrl.Text);
+                        resp = BStaff.Edit(Convert.ToInt32(this.txtId.Text),
+                            this.txtName.Text.Trim().ToUpper(), this.txtSurname.Text, this.cbGender.Text, this.dtDate.Value,
+             this.txtDocNumber.Text, this.txtAddress.Text, this.txtPhone.Text, this.txtEmail.Text, this.cbAccess.Text,
+             this.txtUsername.Text, this.txtPassword.Text);
                     }
 
                     if (resp.Equals("OK"))
@@ -221,17 +229,24 @@ namespace ViewLayer
             }
         }
 
-        private void dataList_DoubleClick(object sender, EventArgs e)
+        private void dataList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            this.txtId.Text = Convert.ToString(this.dataList.CurrentRow.Cells["idsupply"].Value);
-            this.txtCompany.Text = Convert.ToString(this.dataList.CurrentRow.Cells["company"].Value);
-            this.txtAddress.Text = Convert.ToString(this.dataList.CurrentRow.Cells["address"].Value);
-            this.txtUrl.Text = Convert.ToString(this.dataList.CurrentRow.Cells["url"].Value);
+            this.txtId.Text = Convert.ToString(this.dataList.CurrentRow.Cells["idstaff"].Value);
+            this.txtName.Text = Convert.ToString(this.dataList.CurrentRow.Cells["name"].Value);
+            this.txtSurname.Text = Convert.ToString(this.dataList.CurrentRow.Cells["surname"].Value);
+            this.cbGender.Text = Convert.ToString(this.dataList.CurrentRow.Cells["gender"].Value);
+            this.dtDate.Value = Convert.ToDateTime(this.dataList.CurrentRow.Cells["dob"].Value);
             this.txtEmail.Text = Convert.ToString(this.dataList.CurrentRow.Cells["email"].Value);
+            this.txtAddress.Text = Convert.ToString(this.dataList.CurrentRow.Cells["address"].Value);
+            this.txtPhone.Text = Convert.ToString(this.dataList.CurrentRow.Cells["phone"].Value);
+            this.cbAccess.Text = Convert.ToString(this.dataList.CurrentRow.Cells["access"].Value);
             this.txtDocNumber.Text = Convert.ToString(this.dataList.CurrentRow.Cells["document_number"].Value);
-            this.cbDocumentType.Text = Convert.ToString(this.dataList.CurrentRow.Cells["document_type"].Value);
-            this.cbComercialSector.Text = Convert.ToString(this.dataList.CurrentRow.Cells["business_department"].Value);
+            this.txtUsername.Text = Convert.ToString(this.dataList.CurrentRow.Cells["username"].Value);
+            this.txtPassword.Text = Convert.ToString(this.dataList.CurrentRow.Cells["password"].Value);
             
+            
+            
+
             this.tabControl1.SelectedIndex = 1;
         }
 
@@ -295,7 +310,7 @@ namespace ViewLayer
                         if (Convert.ToBoolean(row.Cells[0].Value))
                         {
                             Code = Convert.ToString(row.Cells[1].Value);
-                            resp = BSupplier.Delete(Convert.ToInt32(Code));
+                            resp = BStaff.Delete(Convert.ToInt32(Code));
 
                             if (resp.Equals("OK"))
                             {
@@ -321,5 +336,7 @@ namespace ViewLayer
         {
             this.txtSearch.Text = string.Empty;
         }
+
+
     }
 }

@@ -18,7 +18,7 @@ namespace SysBusiness
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmSupplier());
+            Application.Run(new frmLogin());
         }
     }
 }

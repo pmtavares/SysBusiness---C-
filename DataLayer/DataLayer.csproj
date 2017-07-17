@@ -42,8 +42,11 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Conection.cs" />
     <Compile Include="DCategory.cs" />
+    <Compile Include="DDetail_Input.cs" />
+    <Compile Include="DInput.cs" />
     <Compile Include="DPresentation.cs" />
     <Compile Include="DProduct.cs" />
+    <Compile Include="DStaff.cs" />
     <Compile Include="DSupplier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

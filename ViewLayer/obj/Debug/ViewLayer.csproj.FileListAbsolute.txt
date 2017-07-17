@@ -15,3 +15,6 @@ C:\Users\pedro\documents\visual studio 2013\Projects\SysBusiness\ViewLayer\obj\D
 C:\Users\pedro\documents\visual studio 2013\Projects\SysBusiness\ViewLayer\obj\Debug\ViewLayer.Properties.Resources.resources
 C:\Users\pedro\documents\visual studio 2013\Projects\SysBusiness\ViewLayer\obj\Debug\ViewLayer.frmSearchCategory.resources
 C:\Users\pedro\documents\visual studio 2013\Projects\SysBusiness\ViewLayer\obj\Debug\ViewLayer.frmSupplier.resources
+C:\Users\pedro\Documents\Visual Studio 2013\Projects\SysBusiness\ViewLayer\obj\Debug\ViewLayer.frmStaff.resources
+C:\Users\pedro\Documents\Visual Studio 2013\Projects\SysBusiness\ViewLayer\obj\Debug\ViewLayer.frmMain.resources
+C:\Users\pedro\Documents\Visual Studio 2013\Projects\SysBusiness\ViewLayer\obj\Debug\ViewLayer.frmLogin.resources

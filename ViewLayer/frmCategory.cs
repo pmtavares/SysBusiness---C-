@@ -16,6 +16,21 @@ namespace ViewLayer
         private bool eNew = false;
         private bool eEdit = false;
 
+        private static frmCategory  _Instance;
+
+        public static frmCategory GetInstance()
+        {
+            if(_Instance == null)
+            {
+                _Instance = new frmCategory();
+            }
+            else
+            {
+                MessageBox.Show("Object already running");
+            }
+            return _Instance;
+        }
+
         public frmCategory()
         {
             InitializeComponent();
