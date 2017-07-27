@@ -120,7 +120,7 @@ namespace DataLayer
         }
 
 
-        public string Insert(DDetail_Input detail, ref SqlConnection SqlCon, SqlTransaction sqlTra)
+        public string Insert(DDetail_Input detail, ref SqlConnection SqlCon, ref SqlTransaction sqlTra)
         {
             string resp = "";
             

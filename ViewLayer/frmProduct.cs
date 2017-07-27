@@ -357,6 +357,11 @@ namespace ViewLayer
             form.ShowDialog();
         }
 
+        private void frmProduct_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _Instance = null;
+        }
+
 
     }
 }

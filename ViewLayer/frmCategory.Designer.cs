@@ -349,6 +349,7 @@
             this.Controls.Add(this.label1);
             this.Name = "frmCategory";
             this.Text = "Categories";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmCategory_FormClosed);
             this.Load += new System.EventHandler(this.frmCategory_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);

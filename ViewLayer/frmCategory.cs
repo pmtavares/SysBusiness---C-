@@ -285,5 +285,10 @@ namespace ViewLayer
 
             }
         }
+
+        private void frmCategory_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _Instance = null;
+        }
     }
 }

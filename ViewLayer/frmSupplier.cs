@@ -17,10 +17,25 @@ namespace ViewLayer
 
         private bool eNew = false;
         private bool eEdit = false;
+
+        private static frmSupplier _Instance;
         public frmSupplier()
         {
             InitializeComponent();
             this.ttMessage.SetToolTip(this.txtCompany, "Insert the name of supplier");
+        }
+
+
+
+
+        public static frmSupplier GetInstance()
+        {
+            if (_Instance == null)
+            {
+                _Instance = new frmSupplier();
+            }
+
+            return _Instance;
         }
 
         //Show confirmation message
@@ -320,6 +335,11 @@ namespace ViewLayer
         private void cbSearch_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.txtSearch.Text = string.Empty;
+        }
+
+        private void frmSupplier_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _Instance = null;
         }
     }
 }

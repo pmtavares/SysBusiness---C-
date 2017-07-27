@@ -18,3 +18,6 @@ C:\Users\pedro\documents\visual studio 2013\Projects\SysBusiness\ViewLayer\obj\D
 C:\Users\pedro\Documents\Visual Studio 2013\Projects\SysBusiness\ViewLayer\obj\Debug\ViewLayer.frmStaff.resources
 C:\Users\pedro\Documents\Visual Studio 2013\Projects\SysBusiness\ViewLayer\obj\Debug\ViewLayer.frmMain.resources
 C:\Users\pedro\Documents\Visual Studio 2013\Projects\SysBusiness\ViewLayer\obj\Debug\ViewLayer.frmLogin.resources
+C:\Users\pedro\Documents\Visual Studio 2013\Projects\SysBusiness\ViewLayer\obj\Debug\ViewLayer.frmInput.resources
+C:\Users\pedro\Documents\Visual Studio 2013\Projects\SysBusiness\ViewLayer\obj\Debug\ViewLayer.frmSeeProductInput.resources
+C:\Users\pedro\Documents\Visual Studio 2013\Projects\SysBusiness\ViewLayer\obj\Debug\ViewLayer.frmSeeSupplierInput.resources

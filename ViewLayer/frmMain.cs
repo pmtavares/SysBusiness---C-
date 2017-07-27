@@ -201,5 +201,19 @@ namespace ViewLayer
             ManagerAccess();
             ShowLabels();
         }
+
+        private void incomingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmInput frm = frmInput.GetInstance();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void suppliersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmSupplier frm = frmSupplier.GetInstance();
+            frm.MdiParent = this;
+            frm.Show();
+        }
     }
 }

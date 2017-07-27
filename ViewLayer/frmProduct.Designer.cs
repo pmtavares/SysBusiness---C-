@@ -465,6 +465,7 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "frmProduct";
             this.Text = "frmProduct";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmProduct_FormClosed);
             this.Load += new System.EventHandler(this.frmProduct_Load);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();

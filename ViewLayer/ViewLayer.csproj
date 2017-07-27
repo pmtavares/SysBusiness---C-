@@ -53,6 +53,12 @@
     <Compile Include="frmCategory.Designer.cs">
       <DependentUpon>frmCategory.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInput.Designer.cs">
+      <DependentUpon>frmInput.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,6 +88,18 @@
     </Compile>
     <Compile Include="frmSearchCategory.Designer.cs">
       <DependentUpon>frmSearchCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSeeProductInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSeeProductInput.Designer.cs">
+      <DependentUpon>frmSeeProductInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSeeSupplierInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSeeSupplierInput.Designer.cs">
+      <DependentUpon>frmSeeSupplierInput.cs</DependentUpon>
     </Compile>
     <Compile Include="frmStaff.cs">
       <SubType>Form</SubType>
@@ -117,6 +135,9 @@
     <EmbeddedResource Include="frmCategory.resx">
       <DependentUpon>frmCategory.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmInput.resx">
+      <DependentUpon>frmInput.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -131,6 +152,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmSearchCategory.resx">
       <DependentUpon>frmSearchCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSeeProductInput.resx">
+      <DependentUpon>frmSeeProductInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSeeSupplierInput.resx">
+      <DependentUpon>frmSeeSupplierInput.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmStaff.resx">
       <DependentUpon>frmStaff.cs</DependentUpon>
@@ -178,6 +205,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\login.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1481313373_sign-add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1481313424_minus.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

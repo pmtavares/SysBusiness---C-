@@ -60,6 +60,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.cbSearch = new System.Windows.Forms.ComboBox();
             this.chkDelete = new System.Windows.Forms.CheckBox();
             this.dataList = new System.Windows.Forms.DataGridView();
             this.Delete = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -68,7 +69,6 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.cbSearch = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dbBusinessDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).BeginInit();
@@ -376,6 +376,18 @@
             this.tabPage1.Text = "List";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // cbSearch
+            // 
+            this.cbSearch.FormattingEnabled = true;
+            this.cbSearch.Items.AddRange(new object[] {
+            "Company",
+            "Document"});
+            this.cbSearch.Location = new System.Drawing.Point(49, 18);
+            this.cbSearch.Name = "cbSearch";
+            this.cbSearch.Size = new System.Drawing.Size(81, 21);
+            this.cbSearch.TabIndex = 8;
+            this.cbSearch.SelectedIndexChanged += new System.EventHandler(this.cbSearch_SelectedIndexChanged);
+            // 
             // chkDelete
             // 
             this.chkDelete.AutoSize = true;
@@ -460,18 +472,6 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Supplier";
             // 
-            // cbSearch
-            // 
-            this.cbSearch.FormattingEnabled = true;
-            this.cbSearch.Items.AddRange(new object[] {
-            "Company",
-            "Document"});
-            this.cbSearch.Location = new System.Drawing.Point(49, 18);
-            this.cbSearch.Name = "cbSearch";
-            this.cbSearch.Size = new System.Drawing.Size(81, 21);
-            this.cbSearch.TabIndex = 8;
-            this.cbSearch.SelectedIndexChanged += new System.EventHandler(this.cbSearch_SelectedIndexChanged);
-            // 
             // frmSupplier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -481,6 +481,7 @@
             this.Controls.Add(this.label1);
             this.Name = "frmSupplier";
             this.Text = "Supplier";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmSupplier_FormClosed);
             this.Load += new System.EventHandler(this.frmSupplier_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dbBusinessDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcon)).EndInit();
