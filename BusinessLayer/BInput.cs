@@ -36,7 +36,7 @@ namespace BusinessLayer
                 detail.ValuePurchase = Convert.ToDecimal(row["value_purchased"].ToString());
                 detail.ValueSold = Convert.ToDecimal(row["value_sold"].ToString());
                 detail.InitialStoque = Convert.ToInt32(row["initial_stoque"].ToString());
-                detail.CurrentStoque = Convert.ToInt32(row["current_stoque"].ToString());
+                detail.CurrentStoque = Convert.ToInt32(row["initial_stoque"].ToString());
                 detail.ProductioDate = Convert.ToDateTime(row["produced_date"].ToString());
                 detail.ExpiredDate = Convert.ToDateTime(row["expired_date"].ToString());
 
@@ -61,7 +61,7 @@ namespace BusinessLayer
         public static DataTable SearchNameDate(string searchtext, string searchtext2)
         {
             DInput Obj = new DInput();
-            Obj.SearchText = searchtext;
+            //Obj.SearchText = searchtext;
 
             return Obj.SearchNameDate(searchtext, searchtext2);
         }

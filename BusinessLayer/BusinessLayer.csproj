@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BCategory.cs" />
+    <Compile Include="BClient.cs" />
     <Compile Include="BInput.cs" />
     <Compile Include="BPresentation.cs" />
     <Compile Include="BProduct.cs" />

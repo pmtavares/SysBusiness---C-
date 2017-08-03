@@ -69,13 +69,17 @@ namespace ViewLayer
             this.txtPricePurchased.Text = string.Empty;
             this.lblTotalToPay.Text = "0.0";
             this.CreateTable();
-            this.CleanDetails();
+            //this.CleanDetails();
 
             
         }
         private void CleanDetails()
         {
             this.txtIdProduct.Text = string.Empty;
+            this.txtProduct.Text = string.Empty;
+            this.txtInitialStoque.Text = string.Empty;
+            this.txtPricePurchased.Text = string.Empty;
+            this.txtPriceSale.Text = string.Empty;
         }
 
         //enabled boxes
@@ -87,17 +91,15 @@ namespace ViewLayer
             this.txtSerie.ReadOnly = !value;
             this.txtCorelativ.ReadOnly = !value;
             this.txtVat.ReadOnly = !value;
-            this.txtPricePurchased.Enabled = !value;
-            this.txtPriceSale.Enabled = !value;
-            this.txtInitialStoque.Enabled = !value;
+            this.txtPricePurchased.Enabled = value;
+            this.txtPriceSale.Enabled = value;
+            this.txtInitialStoque.Enabled = value;
 
             this.cbReceipt.Enabled = value;
-            this.btnSearch.Enabled = value;
+            
 
             this.btnAdd.Enabled = value;
-            this.btnDelete.Enabled = value;
-
-            this.btnSearchSupplier.Enabled = value;
+           
             this.btnSearchProduct.Enabled = value;
             
         }
@@ -114,6 +116,9 @@ namespace ViewLayer
                 this.btnSearchSupplier.Enabled = true;
                 this.btnSearchProduct.Enabled = true;
 
+                this.btnCancelInput.Enabled = false;
+                this.btnSearch.Enabled = false;
+
             }
             else
             {
@@ -124,19 +129,23 @@ namespace ViewLayer
                 this.btnCancel.Enabled = false;
                 this.btnSearchSupplier.Enabled = false;
                 this.btnSearchProduct.Enabled = false;
+
+                this.btnCancelInput.Enabled = true;
+                this.btnSearch.Enabled = true;
+                
             }
 
         }
         private void HideCollumns()
         {
             this.dataList.Columns[0].Visible = false;
-            this.dataList.Columns[1].Visible = false;
+            //this.dataList.Columns[1].Visible = false;
            
         }
 
         private void ShowDate()
         {
-            this.dataList.DataSource = BInput.SearchNameDate(this.dtpInitialDate.Value.ToString("dd/MM/yyyy"),this.dtpFinalDate.Value.ToString("dd/MM/yyyy") );
+            this.dataList.DataSource = BInput.SearchNameDate(this.dtpInitialDate.Value.ToString("yyyy/MM/dd"),this.dtpFinalDate.Value.ToString("yyyy/MM/dd") );
             //this.HideCollumns();
             lblTotal.Text = Convert.ToString(dataList.Rows.Count) + " registers found";
         }
@@ -145,7 +154,16 @@ namespace ViewLayer
         private void ShowDetailInput()
         {
             this.dataListDetails.DataSource = BInput.ShowDetails(this.txtId.Text);
+            
            
+        }
+
+        private void ShowInput()
+        {
+            
+            this.dataList.DataSource = BInput.Show();
+            
+
         }
 
         
@@ -161,6 +179,23 @@ namespace ViewLayer
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
+            try
+            {
+                int indexLine = this.dataListDetails.CurrentCell.RowIndex;
+
+                DataRow row = this.dtDetails.Rows[indexLine];
+
+
+                this.totalPaid = this.totalPaid - Convert.ToDecimal(row["subtotal"].ToString());
+                this.lblTotalToPay.Text = totalPaid.ToString("#0.00#");
+
+                //remove the line from data list
+                this.dtDetails.Rows.Remove(row);
+            }
+            catch(Exception ex)
+            {
+                MessageError("There is no line to remove");
+            }
 
         }
 
@@ -251,16 +286,16 @@ namespace ViewLayer
         private void CreateTable()
         {
             this.dtDetails = new DataTable("Detail");
-            this.dtDetails.Columns.Add("idproduct", System.Type.GetType("system.Int32"));
-            
-            this.dtDetails.Columns.Add("product", System.Type.GetType("system.String"));
-            this.dtDetails.Columns.Add("value_purchased", System.Type.GetType("system.Decimal"));
-            this.dtDetails.Columns.Add("value_sold", System.Type.GetType("system.Decimal"));
-            this.dtDetails.Columns.Add("initial_stoque", System.Type.GetType("system.Int32"));
-            this.dtDetails.Columns.Add("produced_date", System.Type.GetType("system.Int32"));
-            this.dtDetails.Columns.Add("initial_stoque", System.Type.GetType("system.DateTime"));
-            this.dtDetails.Columns.Add("expired_date", System.Type.GetType("system.DateTime"));
-            this.dtDetails.Columns.Add("subtotal", System.Type.GetType("system.Decimal"));
+            this.dtDetails.Columns.Add("idproduct", System.Type.GetType("System.Int32"));
+            this.dtDetails.Columns.Add("product", System.Type.GetType("System.String"));
+            this.dtDetails.Columns.Add("value_purchased", System.Type.GetType("System.Decimal"));
+            this.dtDetails.Columns.Add("value_sold", System.Type.GetType("System.Decimal"));
+            this.dtDetails.Columns.Add("initial_stoque", System.Type.GetType("System.Int32"));
+            this.dtDetails.Columns.Add("current_stoque", System.Type.GetType("System.Int32"));
+            this.dtDetails.Columns.Add("produced_date", System.Type.GetType("System.DateTime"));
+            this.dtDetails.Columns.Add("expired_date", System.Type.GetType("System.DateTime"));
+            this.dtDetails.Columns.Add("subtotal", System.Type.GetType("System.Decimal"));
+           // this.dtDetails.Columns.Add("vat", System.Type.GetType("System.Decimal"));
 
             this.dataListDetails.DataSource = this.dtDetails;
         }
@@ -271,8 +306,11 @@ namespace ViewLayer
             this.Left = 0;
             this.EnabledField(false);
             this.Enabledbuttons();
+            this.HideCollumns();
             this.CreateTable();
-            this.ShowDetailInput();
+            //this.ShowDetailInput();
+            this.ShowInput();
+            this.cbReceipt.SelectedIndex = 0;
         }
 
         private void btnNew_Click(object sender, EventArgs e)
@@ -284,6 +322,7 @@ namespace ViewLayer
             this.EnabledField(true);
             this.txtSerie.Focus();
             //this.txtIdProduct.Enabled = false;
+            this.totalPaid = 0;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -299,7 +338,7 @@ namespace ViewLayer
             try
             {
                 string resp = "";
-                if (txtidSupplier.Text == string.Empty || txtIdProduct.Text == string.Empty || txtSerie.Text == string.Empty)
+                if (txtidSupplier.Text == string.Empty || txtSerie.Text == string.Empty)
                 {
                     MessageError("Fill the fields");
                     errorIcon.SetError(txtidSupplier, "Insert the supply");
@@ -314,7 +353,7 @@ namespace ViewLayer
                     {
                         resp = BInput.Insert(idstaff, Convert.ToInt32(this.txtidSupplier.Text), Convert.ToDateTime(this.dtpDate.Text),
                            this.cbReceipt.Text, txtSerie.Text, txtCorelativ.Text, Convert.ToDecimal(txtVat.Text),
-                           "ISSUED", this.dtDetails);
+                           "ISSUED", dtDetails);
                     }
                     
 
@@ -364,8 +403,34 @@ namespace ViewLayer
                     {
                         if(Convert.ToInt32(row["idproduct"]) == Convert.ToInt32(this.txtIdProduct.Text))
                         {
-
+                            save = false;
+                            this.MessageError("Product already added");
                         }
+                    }
+
+                    if(save)
+                    {
+                        //code to add to datalist
+                        decimal subtotal = Convert.ToDecimal(this.txtInitialStoque.Text) * Convert.ToDecimal(this.txtPricePurchased.Text);
+
+
+                        //Calculate the total
+                        totalPaid = totalPaid + subtotal;
+                        this.lblTotalToPay.Text = totalPaid.ToString("#0.00#");
+
+                        DataRow row = this.dtDetails.NewRow();
+
+                        row["idproduct"] = Convert.ToInt32(this.txtIdProduct.Text);
+                        row["product"] = this.txtProduct.Text;
+                        row["value_purchased"] = Convert.ToDecimal(this.txtPricePurchased.Text);
+                        row["value_sold"] = Convert.ToDecimal(this.txtPricePurchased.Text);
+                        row["initial_stoque"] = Convert.ToInt32(this.txtInitialStoque.Text);
+                        row["produced_date"] = Convert.ToDateTime(this.dtpOrdered.Value);
+                        row["expired_date"] = this.dtpExpire.Value;
+                        row["subtotal"] = subtotal;
+
+                        this.dtDetails.Rows.Add(row);
+                        this.CleanDetails();
                     }
                     
                 }
@@ -374,6 +439,33 @@ namespace ViewLayer
             {
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
+        }
+
+        private void dataList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dataList.Columns["Cancel"].Index)
+            {
+                DataGridViewCheckBoxCell chkCancel = (DataGridViewCheckBoxCell)dataList.Rows[e.RowIndex].Cells["Cancel"];
+                chkCancel.Value = !Convert.ToBoolean(chkCancel.Value);
+            }
+        }
+
+        private void dataList_DoubleClick(object sender, EventArgs e)
+        {
+            this.txtId.Text= Convert.ToString(this.dataList.CurrentRow.Cells["idinput"].Value);
+            this.txtSupplier.Text = Convert.ToString(this.dataList.CurrentRow.Cells["supplier"].Value);
+            this.dtpDate.Value = Convert.ToDateTime(this.dataList.CurrentRow.Cells["date"].Value);
+            
+            this.cbReceipt.Text = Convert.ToString(this.dataList.CurrentRow.Cells["type"].Value);
+            this.txtSerie.Text = Convert.ToString(this.dataList.CurrentRow.Cells["serie"].Value);
+            this.txtCorelativ.Text = Convert.ToString(this.dataList.CurrentRow.Cells["corelativ"].Value);
+            //this.txtVat.Text = Convert.ToString(this.dataList.CurrentRow.Cells["vat"].Value);
+            this.lblTotalToPay.Text = Convert.ToString(this.dataList.CurrentRow.Cells["Total"].Value);
+            this.ShowDetailInput();
+            this.tabControl1.SelectedIndex = 1;
+
+
+
         }
 
 

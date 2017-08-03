@@ -207,6 +207,7 @@ namespace ViewLayer
             frmInput frm = frmInput.GetInstance();
             frm.MdiParent = this;
             frm.Show();
+            frm.idstaff = Convert.ToInt32(this.IdStaff);
         }
 
         private void suppliersToolStripMenuItem_Click(object sender, EventArgs e)

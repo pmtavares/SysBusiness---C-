@@ -126,14 +126,17 @@ namespace DataLayer
             
             try
             {
-                SqlCon.ConnectionString = Conection.cn;
-                SqlCon.Open();
-
                 SqlCommand SqlCmd = new SqlCommand();
-
                 SqlCmd.Connection = SqlCon;
-                SqlCmd.CommandText = "sp_insert_input_detal";
+                SqlCmd.Transaction = sqlTra;
+                SqlCmd.CommandText = "spinsert_input_detail";
                 SqlCmd.CommandType = CommandType.StoredProcedure;
+
+
+                //SqlCon.ConnectionString = Conection.cn;
+                //SqlCon.Open();
+
+                            
 
                 //Initialize variables
                 SqlParameter ParId = new SqlParameter();

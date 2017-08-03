@@ -81,7 +81,7 @@
             this.Cancel = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.lblTotal = new System.Windows.Forms.Label();
             this.btnPrint = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnCancelInput = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -173,6 +173,7 @@
             this.txtVat.Name = "txtVat";
             this.txtVat.Size = new System.Drawing.Size(97, 20);
             this.txtVat.TabIndex = 28;
+            this.txtVat.Text = "0";
             // 
             // label12
             // 
@@ -209,6 +210,9 @@
             // cbReceipt
             // 
             this.cbReceipt.FormattingEnabled = true;
+            this.cbReceipt.Items.AddRange(new object[] {
+            "Invoice",
+            "Receipt"});
             this.cbReceipt.Location = new System.Drawing.Point(90, 68);
             this.cbReceipt.Name = "cbReceipt";
             this.cbReceipt.Size = new System.Drawing.Size(137, 21);
@@ -521,7 +525,7 @@
             this.tabPage1.Controls.Add(this.dataList);
             this.tabPage1.Controls.Add(this.lblTotal);
             this.tabPage1.Controls.Add(this.btnPrint);
-            this.tabPage1.Controls.Add(this.btnDelete);
+            this.tabPage1.Controls.Add(this.btnCancelInput);
             this.tabPage1.Controls.Add(this.btnSearch);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
@@ -583,6 +587,8 @@
             this.dataList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataList.Size = new System.Drawing.Size(718, 185);
             this.dataList.TabIndex = 6;
+            this.dataList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataList_CellContentClick);
+            this.dataList.DoubleClick += new System.EventHandler(this.dataList_DoubleClick);
             // 
             // Cancel
             // 
@@ -608,15 +614,15 @@
             this.btnPrint.Text = "Print";
             this.btnPrint.UseVisualStyleBackColor = true;
             // 
-            // btnDelete
+            // btnCancelInput
             // 
-            this.btnDelete.Location = new System.Drawing.Point(406, 18);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.TabIndex = 3;
-            this.btnDelete.Text = "Cancel";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click_1);
+            this.btnCancelInput.Location = new System.Drawing.Point(406, 18);
+            this.btnCancelInput.Name = "btnCancelInput";
+            this.btnCancelInput.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelInput.TabIndex = 3;
+            this.btnCancelInput.Text = "Cancel";
+            this.btnCancelInput.UseVisualStyleBackColor = true;
+            this.btnCancelInput.Click += new System.EventHandler(this.btnDelete_Click_1);
             // 
             // btnSearch
             // 
@@ -714,7 +720,7 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn Cancel;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Button btnPrint;
-        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnCancelInput;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;

@@ -42,6 +42,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Conection.cs" />
     <Compile Include="DCategory.cs" />
+    <Compile Include="DClient.cs" />
     <Compile Include="DDetail_Input.cs" />
     <Compile Include="DInput.cs" />
     <Compile Include="DPresentation.cs" />

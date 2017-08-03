@@ -8,34 +8,32 @@ using System.Data.SqlClient;
 
 namespace DataLayer
 {
-    public class DStaff
+    public class DClient
     {
+
         private int _Id;
-                
+
         private string _Name;
 
         private string _Surname;
 
         private string _Gender;
-               
+
         private DateTime _Dob;
-                
-        private string _Document_Number;
+
+        private string _TypeDocument;
+        
+        private string _DocumentNumber;
 
         private string _Address;
-                
+
         private string _Phone;
-               
+
         private string _Email;
-              
-        private string _Access;
-              
-        private string _Username;
-                
-        private string _Password;
 
         
         private string _SearchText;
+
         public int Id
         {
             get { return _Id; }
@@ -61,10 +59,16 @@ namespace DataLayer
             get { return _Dob; }
             set { _Dob = value; }
         }
-        public string Document_Number
+
+        public string TypeDocument
         {
-            get { return _Document_Number; }
-            set { _Document_Number = value; }
+            get { return _TypeDocument; }
+            set { _TypeDocument = value; }
+        }
+        public string DocumentNumber
+        {
+            get { return _DocumentNumber; }
+            set { _DocumentNumber = value; }
         }
         public string Address
         {
@@ -81,53 +85,39 @@ namespace DataLayer
             get { return _Email; }
             set { _Email = value; }
         }
-        public string Access
-        {
-            get { return _Access; }
-            set { _Access = value; }
-        }
-        public string Username
-        {
-            get { return _Username; }
-            set { _Username = value; }
-        }
-        public string Password
-        {
-            get { return _Password; }
-            set { _Password = value; }
-        }
+     
+        
         public string SearchText
         {
             get { return _SearchText; }
             set { _SearchText = value; }
         }
 
-         public DStaff()
+         public DClient()
         {
 
         }
 
-         public DStaff(int id, string name, string surname, string gender, DateTime dob, 
-             string document_number, string address, string phone, string email, string access,
-             string username, string password, string textsearch)
+         public DClient(int id, string name, string surname, string gender, DateTime dob, 
+             string type_document, string document_number, string address, string phone, string email,
+              string textsearch)
         {
             this.Id = id;
             this.Name = name;
             this.Surname = surname;
             this.Gender = gender;
             this.Dob = dob;
-            this.Document_Number = document_number;
+            this.TypeDocument = type_document;
+            this.DocumentNumber = document_number;
             this.Address = address;
             this.Phone = phone;
-            this.Access = access;
+            
             this.Email = email;
-            this.Username = username;
-            this.Password = password;
+           
             this.SearchText = textsearch;
 
         }
-
-         public string Insert(DStaff staff)
+         public string Insert(DClient client)
          {
              string resp = "";
              SqlConnection SqlCon = new SqlConnection();
@@ -137,9 +127,8 @@ namespace DataLayer
                  SqlCon.Open();
 
                  SqlCommand SqlCmd = new SqlCommand();
-
                  SqlCmd.Connection = SqlCon;
-                 SqlCmd.CommandText = "spinsert_staff";
+                 SqlCmd.CommandText = "spinsert_client";
                  SqlCmd.CommandType = CommandType.StoredProcedure;
 
                  //Initialize variables
@@ -147,64 +136,70 @@ namespace DataLayer
                  ParId.ParameterName = "@id";
                  ParId.SqlDbType = SqlDbType.Int;
                  ParId.Direction = ParameterDirection.Output;
-
                  SqlCmd.Parameters.Add(ParId);
 
-                 SqlParameter ParName= new SqlParameter();
+                 SqlParameter ParName = new SqlParameter();
                  ParName.ParameterName = "@name";
                  ParName.SqlDbType = SqlDbType.VarChar;
-                 ParName.Size = 20;
-                 ParName.Value = staff.Name;
+                 ParName.Size = 50;
+                 ParName.Value = client.Name;
 
                  SqlCmd.Parameters.Add(ParName);
 
                  SqlParameter ParSurname = new SqlParameter();
                  ParSurname.ParameterName = "@surname";
                  ParSurname.SqlDbType = SqlDbType.VarChar;
-                 ParSurname.Size = 40;
-                 ParSurname.Value = staff.Surname;
+                 ParSurname.Size = 50;
+                 ParSurname.Value = client.Surname;
 
                  SqlCmd.Parameters.Add(ParSurname);
 
-                
+
 
                  SqlParameter ParGender = new SqlParameter();
-                 ParGender.ParameterName = "@genre";
+                 ParGender.ParameterName = "@gender";
                  ParGender.SqlDbType = SqlDbType.VarChar;
                  ParGender.Size = 1;
-                 ParGender.Value = staff.Gender;
+                 ParGender.Value = client.Gender;
 
                  SqlCmd.Parameters.Add(ParGender);
 
                  SqlParameter ParDob = new SqlParameter();
-                 ParDob.ParameterName = "@dob";
+                 ParDob.ParameterName = "@date_birth";
                  ParDob.SqlDbType = SqlDbType.DateTime;
-                 //ParDocumentType.Size = 50;
-                 ParDob.Value = staff.Dob;
+                 ParDob.Value = client.Dob;
 
                  SqlCmd.Parameters.Add(ParDob);
+
+                 SqlParameter ParDocumentType = new SqlParameter();
+                 ParDocumentType.ParameterName = "@document_type";
+                 ParDocumentType.SqlDbType = SqlDbType.VarChar;
+                 ParDocumentType.Size = 50;
+                 ParDocumentType.Value = client.TypeDocument;
+
+                 SqlCmd.Parameters.Add(ParDocumentType);
 
                  SqlParameter ParDocumentNumber = new SqlParameter();
                  ParDocumentNumber.ParameterName = "@document_number";
                  ParDocumentNumber.SqlDbType = SqlDbType.VarChar;
-                 ParDocumentNumber.Size = 8;
-                 ParDocumentNumber.Value = staff.Document_Number;
+                 ParDocumentNumber.Size = 50;
+                 ParDocumentNumber.Value = client.DocumentNumber;
 
                  SqlCmd.Parameters.Add(ParDocumentNumber);
 
                  SqlParameter ParAddress = new SqlParameter();
                  ParAddress.ParameterName = "@address";
                  ParAddress.SqlDbType = SqlDbType.VarChar;
-                 ParAddress.Size = 100;
-                 ParAddress.Value = staff.Address;
+                 ParAddress.Size = 150;
+                 ParAddress.Value = client.Address;
 
                  SqlCmd.Parameters.Add(ParAddress);
 
                  SqlParameter ParPhone = new SqlParameter();
                  ParPhone.ParameterName = "@phone";
                  ParPhone.SqlDbType = SqlDbType.VarChar;
-                 ParPhone.Size = 10;
-                 ParPhone.Value = staff.Phone;
+                 ParPhone.Size = 20;
+                 ParPhone.Value = client.Phone;
 
                  SqlCmd.Parameters.Add(ParPhone);
 
@@ -213,33 +208,11 @@ namespace DataLayer
                  ParEmail.ParameterName = "@email";
                  ParEmail.SqlDbType = SqlDbType.VarChar;
                  ParEmail.Size = 50;
-                 ParEmail.Value = staff.Email;
+                 ParEmail.Value = client.Email;
 
                  SqlCmd.Parameters.Add(ParEmail);
 
-                 SqlParameter ParUsername = new SqlParameter();
-                 ParUsername.ParameterName = "@username";
-                 ParUsername.SqlDbType = SqlDbType.VarChar;
-                 ParUsername.Size = 20;
-                 ParUsername.Value = staff.Username;
-
-                 SqlCmd.Parameters.Add(ParUsername);
-
-                 SqlParameter ParPassword = new SqlParameter();
-                 ParPassword.ParameterName = "@password";
-                 ParPassword.SqlDbType = SqlDbType.VarChar;
-                 ParPassword.Size = 20;
-                 ParPassword.Value = staff.Password;
-
-                 SqlCmd.Parameters.Add(ParPassword);
-
-                 SqlParameter ParAccess = new SqlParameter();
-                 ParAccess.ParameterName = "@access";
-                 ParAccess.SqlDbType = SqlDbType.VarChar;
-                 ParAccess.Size = 20;
-                 ParAccess.Value = staff.Access;
-
-                 SqlCmd.Parameters.Add(ParAccess);
+      
 
 
                  //Execute the command
@@ -261,7 +234,7 @@ namespace DataLayer
              return resp;
          }
 
-         public string Edit(DStaff staff)
+         public string Edit(DClient client)
          {
              string resp = "";
              SqlConnection SqlCon = new SqlConnection();
@@ -271,33 +244,30 @@ namespace DataLayer
                  SqlCon.Open();
 
                  SqlCommand SqlCmd = new SqlCommand();
-
                  SqlCmd.Connection = SqlCon;
-                 SqlCmd.CommandText = "spedit_staff";
+                 SqlCmd.CommandText = "spedit_client";
                  SqlCmd.CommandType = CommandType.StoredProcedure;
 
                  //Initialize variables
                  SqlParameter ParId = new SqlParameter();
                  ParId.ParameterName = "@id";
                  ParId.SqlDbType = SqlDbType.Int;
-                 ParId.Value = staff.Id;
-                 //ParId.Direction = ParameterDirection.Output;
-
+                 ParId.Value = client.Id;
                  SqlCmd.Parameters.Add(ParId);
 
                  SqlParameter ParName = new SqlParameter();
                  ParName.ParameterName = "@name";
                  ParName.SqlDbType = SqlDbType.VarChar;
-                 ParName.Size = 20;
-                 ParName.Value = staff.Name;
+                 ParName.Size = 50;
+                 ParName.Value = client.Name;
 
                  SqlCmd.Parameters.Add(ParName);
 
                  SqlParameter ParSurname = new SqlParameter();
                  ParSurname.ParameterName = "@surname";
                  ParSurname.SqlDbType = SqlDbType.VarChar;
-                 ParSurname.Size = 40;
-                 ParSurname.Value = staff.Surname;
+                 ParSurname.Size = 50;
+                 ParSurname.Value = client.Surname;
 
                  SqlCmd.Parameters.Add(ParSurname);
 
@@ -307,38 +277,46 @@ namespace DataLayer
                  ParGender.ParameterName = "@gender";
                  ParGender.SqlDbType = SqlDbType.VarChar;
                  ParGender.Size = 1;
-                 ParGender.Value = staff.Gender;
+                 ParGender.Value = client.Gender;
 
                  SqlCmd.Parameters.Add(ParGender);
 
                  SqlParameter ParDob = new SqlParameter();
-                 ParDob.ParameterName = "@dob";
-                 ParDob.SqlDbType = SqlDbType.Date;
-                 ParDob.Value = staff.Dob;
+                 ParDob.ParameterName = "@date_birth";
+                 ParDob.SqlDbType = SqlDbType.DateTime;
+                 ParDob.Value = client.Dob;
 
                  SqlCmd.Parameters.Add(ParDob);
+
+                 SqlParameter ParDocumentType = new SqlParameter();
+                 ParDocumentType.ParameterName = "@document_type";
+                 ParDocumentType.SqlDbType = SqlDbType.VarChar;
+                 ParDocumentType.Size = 50;
+                 ParDocumentType.Value = client.TypeDocument;
+
+                 SqlCmd.Parameters.Add(ParDocumentType);
 
                  SqlParameter ParDocumentNumber = new SqlParameter();
                  ParDocumentNumber.ParameterName = "@document_number";
                  ParDocumentNumber.SqlDbType = SqlDbType.VarChar;
-                 ParDocumentNumber.Size = 8;
-                 ParDocumentNumber.Value = staff.Document_Number;
+                 ParDocumentNumber.Size = 50;
+                 ParDocumentNumber.Value = client.DocumentNumber;
 
                  SqlCmd.Parameters.Add(ParDocumentNumber);
 
                  SqlParameter ParAddress = new SqlParameter();
                  ParAddress.ParameterName = "@address";
                  ParAddress.SqlDbType = SqlDbType.VarChar;
-                 ParAddress.Size = 100;
-                 ParAddress.Value = staff.Address;
+                 ParAddress.Size = 150;
+                 ParAddress.Value = client.Address;
 
                  SqlCmd.Parameters.Add(ParAddress);
 
                  SqlParameter ParPhone = new SqlParameter();
                  ParPhone.ParameterName = "@phone";
                  ParPhone.SqlDbType = SqlDbType.VarChar;
-                 ParPhone.Size = 10;
-                 ParPhone.Value = staff.Phone;
+                 ParPhone.Size = 20;
+                 ParPhone.Value = client.Phone;
 
                  SqlCmd.Parameters.Add(ParPhone);
 
@@ -347,36 +325,11 @@ namespace DataLayer
                  ParEmail.ParameterName = "@email";
                  ParEmail.SqlDbType = SqlDbType.VarChar;
                  ParEmail.Size = 50;
-                 ParEmail.Value = staff.Email;
+                 ParEmail.Value = client.Email;
 
                  SqlCmd.Parameters.Add(ParEmail);
 
-                 SqlParameter ParAccess = new SqlParameter();
-                 ParAccess.ParameterName = "@access";
-                 ParAccess.SqlDbType = SqlDbType.VarChar;
-                 ParAccess.Size = 20;
-                 ParAccess.Value = staff.Access;
 
-                 SqlCmd.Parameters.Add(ParAccess);
-
-
-
-
-                 SqlParameter ParUsername = new SqlParameter();
-                 ParUsername.ParameterName = "@username";
-                 ParUsername.SqlDbType = SqlDbType.VarChar;
-                 ParUsername.Size = 20;
-                 ParUsername.Value = staff.Username;
-
-                 SqlCmd.Parameters.Add(ParUsername);
-
-                 SqlParameter ParPassword = new SqlParameter();
-                 ParPassword.ParameterName = "@password";
-                 ParPassword.SqlDbType = SqlDbType.VarChar;
-                 ParPassword.Size = 20;
-                 ParPassword.Value = staff.Password;
-
-                 SqlCmd.Parameters.Add(ParPassword);
 
 
                  //Execute the command
@@ -398,8 +351,7 @@ namespace DataLayer
              return resp;
          }
 
-
-         public string Delete(DStaff staff)
+         public string Delete(DClient client)
          {
              string resp = "";
              SqlConnection SqlCon = new SqlConnection();
@@ -411,14 +363,14 @@ namespace DataLayer
                  SqlCommand SqlCmd = new SqlCommand();
 
                  SqlCmd.Connection = SqlCon;
-                 SqlCmd.CommandText = "spdelete_staff";
+                 SqlCmd.CommandText = "spdelete_client";
                  SqlCmd.CommandType = CommandType.StoredProcedure;
 
                  //Initialize variables
                  SqlParameter ParId = new SqlParameter();
                  ParId.ParameterName = "@id"; //same name as in the procedure
                  ParId.SqlDbType = SqlDbType.Int;
-                 ParId.Value = staff.Id;
+                 ParId.Value = client.Id;
 
                  SqlCmd.Parameters.Add(ParId);
 
@@ -446,83 +398,16 @@ namespace DataLayer
 
          }
 
-         public DataTable ShowName(DStaff staff)
-         {
-             DataTable DtResult = new DataTable("staff");
-             SqlConnection SqlCon = new SqlConnection();
-             try
-             {
-                 SqlCon.ConnectionString = Conection.cn;
-                 SqlCommand SqlCmd = new SqlCommand();
-                 SqlCmd.Connection = SqlCon;
-                 SqlCmd.CommandText = "spsearch_staff_name";
-                 SqlCmd.CommandType = CommandType.StoredProcedure;
-
-
-                 SqlParameter ParSearch = new SqlParameter();
-                 ParSearch.ParameterName = "@texsearch";
-                 ParSearch.SqlDbType = SqlDbType.VarChar;
-                 ParSearch.Size = 50;
-                 ParSearch.Value = staff.SearchText;
-                 SqlCmd.Parameters.Add(ParSearch);
-
-
-                 SqlDataAdapter SqlData = new SqlDataAdapter(SqlCmd);
-                 SqlData.Fill(DtResult);
-
-
-             }
-             catch (Exception ex)
-             {
-                 DtResult = null;
-             }
-             return DtResult;
-         }
-
-
-         public DataTable SearchDocument(DStaff staff)
-         {
-             DataTable DtResult = new DataTable("staff");
-             SqlConnection SqlCon = new SqlConnection();
-             try
-             {
-                 SqlCon.ConnectionString = Conection.cn;
-                 SqlCommand SqlCmd = new SqlCommand();
-                 SqlCmd.Connection = SqlCon;
-                 SqlCmd.CommandText = "spsearch_staff_document";
-                 SqlCmd.CommandType = CommandType.StoredProcedure;
-
-
-                 SqlParameter ParSearch = new SqlParameter();
-                 ParSearch.ParameterName = "@texsearch";
-                 ParSearch.SqlDbType = SqlDbType.VarChar;
-                 ParSearch.Size = 50;
-                 ParSearch.Value = staff.SearchText;
-                 SqlCmd.Parameters.Add(ParSearch);
-
-
-                 SqlDataAdapter SqlData = new SqlDataAdapter(SqlCmd);
-                 SqlData.Fill(DtResult);
-
-
-             }
-             catch (Exception ex)
-             {
-                 DtResult = null;
-             }
-             return DtResult;
-         }
-
          public DataTable ShowValues()
          {
-             DataTable DtResult = new DataTable("staff"); // Table on sql
+             DataTable DtResult = new DataTable("client"); // Table on sql
              SqlConnection SqlCon = new SqlConnection();
              try
              {
                  SqlCon.ConnectionString = Conection.cn;
                  SqlCommand SqlCmd = new SqlCommand();
                  SqlCmd.Connection = SqlCon;
-                 SqlCmd.CommandText = "spshow_staff";
+                 SqlCmd.CommandText = "spshow_client";
                  SqlCmd.CommandType = CommandType.StoredProcedure;
                  SqlDataAdapter SqlData = new SqlDataAdapter(SqlCmd);
                  SqlData.Fill(DtResult);
@@ -540,38 +425,60 @@ namespace DataLayer
          }
 
 
-         public DataTable Login(DStaff staff)
+         public DataTable SearchName(DClient client)
          {
-             DataTable DtResult = new DataTable("staff");
+             DataTable DtResult = new DataTable("client");
              SqlConnection SqlCon = new SqlConnection();
              try
              {
                  SqlCon.ConnectionString = Conection.cn;
                  SqlCommand SqlCmd = new SqlCommand();
                  SqlCmd.Connection = SqlCon;
-                 SqlCmd.CommandText = "splogin";
+                 SqlCmd.CommandText = "spsearch_client_name";
                  SqlCmd.CommandType = CommandType.StoredProcedure;
 
 
-                 SqlParameter ParUsername = new SqlParameter();
-                 ParUsername.ParameterName = "@username";
-                 ParUsername.SqlDbType = SqlDbType.VarChar;
-                 ParUsername.Size = 20;
-                 ParUsername.Value = staff.Username;
-                 SqlCmd.Parameters.Add(ParUsername);
-
-
-                 SqlParameter ParPassword = new SqlParameter();
-                 ParPassword.ParameterName = "@password";
-                 ParPassword.SqlDbType = SqlDbType.VarChar;
-                 ParPassword.Size = 20;
-                 ParPassword.Value = staff.Password;
-
-                 SqlCmd.Parameters.Add(ParPassword);
+                 SqlParameter ParSearch = new SqlParameter();
+                 ParSearch.ParameterName = "@texsearch";
+                 ParSearch.SqlDbType = SqlDbType.VarChar;
+                 ParSearch.Size = 50;
+                 ParSearch.Value = client.SearchText;
+                 SqlCmd.Parameters.Add(ParSearch);
 
 
                  SqlDataAdapter SqlData = new SqlDataAdapter(SqlCmd);
+                 SqlData.Fill(DtResult);
 
+
+             }
+             catch (Exception ex)
+             {
+                 DtResult = null;
+             }
+             return DtResult;
+         }
+         public DataTable SearchDocument(DClient client)
+         {
+             DataTable DtResult = new DataTable("client");
+             SqlConnection SqlCon = new SqlConnection();
+             try
+             {
+                 SqlCon.ConnectionString = Conection.cn;
+                 SqlCommand SqlCmd = new SqlCommand();
+                 SqlCmd.Connection = SqlCon;
+                 SqlCmd.CommandText = "spsearch_client_document";
+                 SqlCmd.CommandType = CommandType.StoredProcedure;
+
+
+                 SqlParameter ParSearch = new SqlParameter();
+                 ParSearch.ParameterName = "@texsearch";
+                 ParSearch.SqlDbType = SqlDbType.VarChar;
+                 ParSearch.Size = 50;
+                 ParSearch.Value = client.SearchText;
+                 SqlCmd.Parameters.Add(ParSearch);
+
+
+                 SqlDataAdapter SqlData = new SqlDataAdapter(SqlCmd);
                  SqlData.Fill(DtResult);
 
 

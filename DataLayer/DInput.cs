@@ -28,9 +28,7 @@ namespace DataLayer
 
         private string _CurrentStatus;
                
-        private string _SearchText;
-               
-        private string _SearchText2;
+     
 
         
         public int IdInput
@@ -87,17 +85,7 @@ namespace DataLayer
             set { _CurrentStatus = value; }
         }
 
-        public string SearchText
-        {
-            get { return _SearchText; }
-            set { _SearchText = value; }
-        }
-
-        public string SearchText2
-        {
-            get { return _SearchText2; }
-            set { _SearchText2 = value; }
-        }
+        
 
         public DInput()
         {
@@ -134,7 +122,6 @@ namespace DataLayer
 
 
                 SqlCommand SqlCmd = new SqlCommand();
-
                 SqlCmd.Connection = SqlCon;
                 SqlCmd.Transaction = sqlTra;
                 SqlCmd.CommandText = "spinsert_inputproduct";
@@ -234,7 +221,7 @@ namespace DataLayer
                         
                         //call insert method from details input
 
-                        det.Insert(det, ref SqlCon, ref sqlTra);
+                        resp = det.Insert(det, ref SqlCon, ref sqlTra);
 
                         if(!resp.Equals("OK"))
                         {
@@ -289,7 +276,7 @@ namespace DataLayer
 
                 //Initialize variables
                 SqlParameter ParId = new SqlParameter();
-                ParId.ParameterName = "@id"; //same name as in the procedure
+                ParId.ParameterName = "@idinput"; //same name as in the procedure
                 ParId.SqlDbType = SqlDbType.Int;
                 ParId.Value = input.IdInput;
 
@@ -347,7 +334,7 @@ namespace DataLayer
             return DtResult;
         }
 
-        public DataTable SearchNameDate(string textsearch, string textsearch2)
+        public DataTable SearchNameDate(string SearchText, string SearchText2)
         {
             DataTable DtResult = new DataTable("inputproduct");
             SqlConnection SqlCon = new SqlConnection();
@@ -361,7 +348,7 @@ namespace DataLayer
 
 
                 SqlParameter ParSearch = new SqlParameter();
-                ParSearch.ParameterName = "@texsearch";
+                ParSearch.ParameterName = "@textsearch";
                 ParSearch.SqlDbType = SqlDbType.VarChar;
                 ParSearch.Size = 20;
                 ParSearch.Value = SearchText;
@@ -372,7 +359,7 @@ namespace DataLayer
                 ParSearch2.SqlDbType = SqlDbType.VarChar;
                 ParSearch2.Size = 20;
                 ParSearch2.Value = SearchText2;
-                SqlCmd.Parameters.Add(ParSearch);
+                SqlCmd.Parameters.Add(ParSearch2);
 
 
                 SqlDataAdapter SqlData = new SqlDataAdapter(SqlCmd);
@@ -390,7 +377,8 @@ namespace DataLayer
 
         public DataTable ShowDetails(string textSearch)
         {
-            DataTable DtResult = new DataTable("inputproduct");
+            DataTable DtResult = new DataTable("inputdetail");
+           
             SqlConnection SqlCon = new SqlConnection();
             try
             {
