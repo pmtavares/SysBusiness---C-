@@ -439,7 +439,7 @@ namespace DataLayer
 
 
                  SqlParameter ParSearch = new SqlParameter();
-                 ParSearch.ParameterName = "@texsearch";
+                 ParSearch.ParameterName = "@textsearch";
                  ParSearch.SqlDbType = SqlDbType.VarChar;
                  ParSearch.Size = 50;
                  ParSearch.Value = client.SearchText;
@@ -471,7 +471,7 @@ namespace DataLayer
 
 
                  SqlParameter ParSearch = new SqlParameter();
-                 ParSearch.ParameterName = "@texsearch";
+                 ParSearch.ParameterName = "@textsearch";
                  ParSearch.SqlDbType = SqlDbType.VarChar;
                  ParSearch.Size = 50;
                  ParSearch.Value = client.SearchText;

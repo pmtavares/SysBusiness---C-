@@ -143,7 +143,6 @@ namespace DataLayer
                 ParId.ParameterName = "@iddetail_input";
                 ParId.SqlDbType = SqlDbType.Int;
                 ParId.Direction = ParameterDirection.Output;
-
                 SqlCmd.Parameters.Add(ParId);
 
                 SqlParameter ParIdInput = new SqlParameter();

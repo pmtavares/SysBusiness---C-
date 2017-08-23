@@ -30,6 +30,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.ProcessingObjectModel.DLL</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.WebForms.DLL</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -44,12 +56,43 @@
     <Compile Include="DCategory.cs" />
     <Compile Include="DClient.cs" />
     <Compile Include="DDetail_Input.cs" />
+    <Compile Include="DDetail_Sale.cs" />
     <Compile Include="DInput.cs" />
     <Compile Include="DPresentation.cs" />
     <Compile Include="DProduct.cs" />
+    <Compile Include="DSale.cs" />
+    <Compile Include="dsMain.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsMain.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DStaff.cs" />
     <Compile Include="DSupplier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="dsMain.xsc">
+      <DependentUpon>dsMain.xsd</DependentUpon>
+    </None>
+    <None Include="dsMain.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsMain.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="dsMain.xss">
+      <DependentUpon>dsMain.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

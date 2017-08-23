@@ -12,3 +12,10 @@ C:\Users\pedro\documents\visual studio 2013\Projects\SysBusiness\SysBusiness\obj
 C:\Users\pedro\documents\visual studio 2013\Projects\SysBusiness\SysBusiness\obj\Debug\SysBusiness.csproj.GenerateResource.Cache
 C:\Users\pedro\documents\visual studio 2013\Projects\SysBusiness\SysBusiness\obj\Debug\SysBusiness.exe
 C:\Users\pedro\documents\visual studio 2013\Projects\SysBusiness\SysBusiness\obj\Debug\SysBusiness.pdb
+C:\Users\pedro\Documents\Visual Studio 2013\Projects\SysBusiness\SysBusiness\bin\Debug\Microsoft.ReportViewer.Common.dll
+C:\Users\pedro\Documents\Visual Studio 2013\Projects\SysBusiness\SysBusiness\bin\Debug\Microsoft.ReportViewer.ProcessingObjectModel.DLL
+C:\Users\pedro\Documents\Visual Studio 2013\Projects\SysBusiness\SysBusiness\bin\Debug\Microsoft.ReportViewer.WebForms.DLL
+C:\Users\pedro\Documents\Visual Studio 2013\Projects\SysBusiness\SysBusiness\bin\Debug\SysBusiness.exe.manifest
+C:\Users\pedro\Documents\Visual Studio 2013\Projects\SysBusiness\SysBusiness\bin\Debug\SysBusiness.application
+C:\Users\pedro\Documents\Visual Studio 2013\Projects\SysBusiness\SysBusiness\obj\Debug\SysBusiness.exe.manifest
+C:\Users\pedro\Documents\Visual Studio 2013\Projects\SysBusiness\SysBusiness\obj\Debug\SysBusiness.application

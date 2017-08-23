@@ -468,6 +468,15 @@ namespace ViewLayer
 
         }
 
+        public void HideTab()
+        {
+            this.tabControl1.Controls.Remove(tabPage2); //remove one tab
+            this.btnCancelInput.Visible = false;
+            this.chkCancel.Visible = false;
+            this.btnPrint.Visible = false;
+
+        }
+
 
       
     }

@@ -30,6 +30,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.ProcessingObjectModel.DLL</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.WebForms.DLL</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -47,6 +59,7 @@
     <Compile Include="BStaff.cs" />
     <Compile Include="BSupplier.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="BSale.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -54,6 +67,9 @@
       <Project>{ac2fa157-0462-429e-a545-632d547215b3}</Project>
       <Name>DataLayer</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

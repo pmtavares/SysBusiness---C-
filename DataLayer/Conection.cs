@@ -8,6 +8,9 @@ namespace DataLayer
 {
     class Conection
     {
-        public static string cn = "Data Source = pedro-PC\\sqlexpress; Initial Catalog = dbBusiness; Integrated Security=true";
+
+        //This is static. Have another connection type. 
+        //public static string cn = "Data Source = pedro-PC\\sqlexpress; Initial Catalog = dbBusiness; Integrated Security=true";
+        public static string cn = Properties.Settings.Default.dbBusinessConnectionString;
     }
 }

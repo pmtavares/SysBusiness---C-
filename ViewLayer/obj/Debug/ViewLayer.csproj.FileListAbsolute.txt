@@ -21,3 +21,15 @@ C:\Users\pedro\Documents\Visual Studio 2013\Projects\SysBusiness\ViewLayer\obj\D
 C:\Users\pedro\Documents\Visual Studio 2013\Projects\SysBusiness\ViewLayer\obj\Debug\ViewLayer.frmInput.resources
 C:\Users\pedro\Documents\Visual Studio 2013\Projects\SysBusiness\ViewLayer\obj\Debug\ViewLayer.frmSeeProductInput.resources
 C:\Users\pedro\Documents\Visual Studio 2013\Projects\SysBusiness\ViewLayer\obj\Debug\ViewLayer.frmSeeSupplierInput.resources
+C:\Users\pedro\Documents\Visual Studio 2013\Projects\SysBusiness\ViewLayer\obj\Debug\ViewLayer.frmClient.resources
+C:\Users\pedro\Documents\Visual Studio 2013\Projects\SysBusiness\ViewLayer\obj\Debug\ViewLayer.frmSale.resources
+C:\Users\pedro\Documents\Visual Studio 2013\Projects\SysBusiness\ViewLayer\obj\Debug\ViewLayer.frmSearchClient.resources
+C:\Users\pedro\Documents\Visual Studio 2013\Projects\SysBusiness\ViewLayer\obj\Debug\ViewLayer.frmSearchProductSale.resources
+C:\Users\pedro\Documents\Visual Studio 2013\Projects\SysBusiness\ViewLayer\obj\Debug\ViewLayer.frmReportReceipt.resources
+C:\Users\pedro\Documents\Visual Studio 2013\Projects\SysBusiness\ViewLayer\obj\Debug\RdlCompile.cache
+C:\Users\pedro\Documents\Visual Studio 2013\Projects\SysBusiness\ViewLayer\obj\Debug\RdlCompile.compiled
+C:\Users\pedro\Documents\Visual Studio 2013\Projects\SysBusiness\ViewLayer\bin\Debug\Microsoft.ReportViewer.Common.dll
+C:\Users\pedro\Documents\Visual Studio 2013\Projects\SysBusiness\ViewLayer\bin\Debug\Microsoft.ReportViewer.ProcessingObjectModel.DLL
+C:\Users\pedro\Documents\Visual Studio 2013\Projects\SysBusiness\ViewLayer\bin\Debug\Microsoft.ReportViewer.WebForms.DLL
+C:\Users\pedro\Documents\Visual Studio 2013\Projects\SysBusiness\ViewLayer\obj\Debug\ViewLayer.frmProductReport.resources
+C:\Users\pedro\Documents\Visual Studio 2013\Projects\SysBusiness\ViewLayer\obj\Debug\ViewLayer.Queries.frmQuerie_Stock_Products.resources

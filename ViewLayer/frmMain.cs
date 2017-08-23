@@ -200,6 +200,12 @@ namespace ViewLayer
         {
             ManagerAccess();
             ShowLabels();
+
+
+            frmInput frm = frmInput.GetInstance();
+            frm.MdiParent = this;
+            frm.Show();
+            frm.idstaff = Convert.ToInt32(this.IdStaff);
         }
 
         private void incomingToolStripMenuItem_Click(object sender, EventArgs e)
@@ -215,6 +221,58 @@ namespace ViewLayer
             frmSupplier frm = frmSupplier.GetInstance();
             frm.MdiParent = this;
             frm.Show();
+        }
+
+        private void clientsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmClient frm = new frmClient();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void staffsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmStaff frm = new frmStaff();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void salesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmSale frm = frmSale.GetInstance();
+            frm.MdiParent = this;
+            frm.Show();
+            frm.idstaff = Convert.ToInt32(this.IdStaff);
+        }
+
+        private void stockToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Queries.frmQuerie_Stock_Products frm = new Queries.frmQuerie_Stock_Products();
+            frm.ShowDialog();
+        }
+
+        private void salesByDateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmSale frm = frmSale.GetInstance();
+            frm.MdiParent = this;
+            frm.HideTab();
+            frm.Show();
+            
+        }
+
+        private void pucharsesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmInput frm = frmInput.GetInstance();
+            frm.MdiParent = this;
+            frm.HideTab();
+            frm.Show();
+        }
+
+        private void backupToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            //My google drive link
+            System.Diagnostics.Process.Start("https://drive.google.com/open?id=0B1V_RBbzf_9lZmpBbVN4dlFUSTg");
         }
     }
 }

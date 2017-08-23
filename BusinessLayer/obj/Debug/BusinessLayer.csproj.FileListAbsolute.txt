@@ -5,3 +5,6 @@ C:\Users\pedro\documents\visual studio 2013\Projects\SysBusiness\BusinessLayer\b
 C:\Users\pedro\documents\visual studio 2013\Projects\SysBusiness\BusinessLayer\obj\Debug\BusinessLayer.csprojResolveAssemblyReference.cache
 C:\Users\pedro\documents\visual studio 2013\Projects\SysBusiness\BusinessLayer\obj\Debug\BusinessLayer.dll
 C:\Users\pedro\documents\visual studio 2013\Projects\SysBusiness\BusinessLayer\obj\Debug\BusinessLayer.pdb
+C:\Users\pedro\Documents\Visual Studio 2013\Projects\SysBusiness\BusinessLayer\bin\Debug\Microsoft.ReportViewer.Common.dll
+C:\Users\pedro\Documents\Visual Studio 2013\Projects\SysBusiness\BusinessLayer\bin\Debug\Microsoft.ReportViewer.ProcessingObjectModel.DLL
+C:\Users\pedro\Documents\Visual Studio 2013\Projects\SysBusiness\BusinessLayer\bin\Debug\Microsoft.ReportViewer.WebForms.DLL

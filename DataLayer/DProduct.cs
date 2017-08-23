@@ -374,5 +374,31 @@ namespace DataLayer
             return DtResult;
         }
 
+        public DataTable Stock_Product()
+        {
+            DataTable DtResult = new DataTable("product"); // Table on sql
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                SqlCon.ConnectionString = Conection.cn;
+                SqlCommand SqlCmd = new SqlCommand();
+                SqlCmd.Connection = SqlCon;
+                SqlCmd.CommandText = "spstock_product";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter SqlData = new SqlDataAdapter(SqlCmd);
+                SqlData.Fill(DtResult);
+
+
+
+            }
+            catch (Exception ex)
+            {
+                DtResult = null;
+                Console.Write("Could not get information: Exception");
+            }
+            return DtResult;
+
+        }
+
     }
 }

@@ -58,7 +58,11 @@ namespace BusinessLayer
             return Obj.ShowName(Obj);
         }
 
+        public static DataTable StockProduct()
+        {
 
+            return new DProduct().Stock_Product();
+        }
 
 
     }

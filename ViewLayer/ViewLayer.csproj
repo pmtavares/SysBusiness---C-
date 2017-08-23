@@ -30,9 +30,23 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.ProcessingObjectModel.DLL</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.WebForms.DLL</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -47,11 +61,27 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dbBusinessDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="dsMain.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsMain.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dstMain.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dstMain.xsd</DependentUpon>
+    </Compile>
     <Compile Include="frmCategory.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmCategory.Designer.cs">
       <DependentUpon>frmCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmClient.Designer.cs">
+      <DependentUpon>frmClient.cs</DependentUpon>
     </Compile>
     <Compile Include="frmInput.cs">
       <SubType>Form</SubType>
@@ -83,11 +113,29 @@
     <Compile Include="frmProduct.Designer.cs">
       <DependentUpon>frmProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmSale.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSale.Designer.cs">
+      <DependentUpon>frmSale.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmSearchCategory.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmSearchCategory.Designer.cs">
       <DependentUpon>frmSearchCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchClient.Designer.cs">
+      <DependentUpon>frmSearchClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchProductSale.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchProductSale.Designer.cs">
+      <DependentUpon>frmSearchProductSale.cs</DependentUpon>
     </Compile>
     <Compile Include="frmSeeProductInput.cs">
       <SubType>Form</SubType>
@@ -124,6 +172,24 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Queries\frmQuerie_Stock_Products.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Queries\frmQuerie_Stock_Products.Designer.cs">
+      <DependentUpon>frmQuerie_Stock_Products.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\frmProductReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\frmProductReport.Designer.cs">
+      <DependentUpon>frmProductReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\frmReportReceipt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\frmReportReceipt.Designer.cs">
+      <DependentUpon>frmReportReceipt.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj">
@@ -134,6 +200,9 @@
   <ItemGroup>
     <EmbeddedResource Include="frmCategory.resx">
       <DependentUpon>frmCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmClient.resx">
+      <DependentUpon>frmClient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmInput.resx">
       <DependentUpon>frmInput.cs</DependentUpon>
@@ -150,8 +219,17 @@
     <EmbeddedResource Include="frmProduct.resx">
       <DependentUpon>frmProduct.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmSale.resx">
+      <DependentUpon>frmSale.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmSearchCategory.resx">
       <DependentUpon>frmSearchCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchClient.resx">
+      <DependentUpon>frmSearchClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchProductSale.resx">
+      <DependentUpon>frmSearchProductSale.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSeeProductInput.resx">
       <DependentUpon>frmSeeProductInput.cs</DependentUpon>
@@ -169,6 +247,17 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Queries\frmQuerie_Stock_Products.resx">
+      <DependentUpon>frmQuerie_Stock_Products.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\frmProductReport.resx">
+      <DependentUpon>frmProductReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\frmReportReceipt.resx">
+      <DependentUpon>frmReportReceipt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptProduct.rdlc" />
+    <EmbeddedResource Include="Reports\rptReceiptSale.rdlc" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -183,6 +272,29 @@
     <None Include="dbBusinessDataSet.xss">
       <DependentUpon>dbBusinessDataSet.xsd</DependentUpon>
     </None>
+    <None Include="dsMain.xsc">
+      <DependentUpon>dsMain.xsd</DependentUpon>
+    </None>
+    <None Include="dsMain.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsMain.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsMain.xss">
+      <DependentUpon>dsMain.xsd</DependentUpon>
+    </None>
+    <None Include="dstMain.xsc">
+      <DependentUpon>dstMain.xsd</DependentUpon>
+    </None>
+    <None Include="dstMain.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dstMain.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dstMain.xss">
+      <DependentUpon>dstMain.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -212,6 +324,7 @@
   <ItemGroup>
     <None Include="Resources\1481313424_minus.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

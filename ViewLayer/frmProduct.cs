@@ -362,6 +362,13 @@ namespace ViewLayer
             _Instance = null;
         }
 
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            frmProductReport frm = new frmProductReport();
+            //frm.ShowDialog();
+            frm.Show();
+        }
+
 
     }
 }

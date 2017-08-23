@@ -132,7 +132,6 @@ namespace DataLayer
                 ParId.ParameterName = "@idinput";
                 ParId.SqlDbType = SqlDbType.Int;
                 ParId.Direction = ParameterDirection.Output;
-
                 SqlCmd.Parameters.Add(ParId);
 
                 SqlParameter ParStaff = new SqlParameter();
@@ -279,7 +278,6 @@ namespace DataLayer
                 ParId.ParameterName = "@idinput"; //same name as in the procedure
                 ParId.SqlDbType = SqlDbType.Int;
                 ParId.Value = input.IdInput;
-
                 SqlCmd.Parameters.Add(ParId);
 
 

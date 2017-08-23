@@ -124,7 +124,7 @@ namespace ViewLayer
             this.EnabledField(false);
             this.Enabledbuttons();
             this.cbSearch.SelectedIndex = 0;
-            this.cbSearch.SelectedIndex = 0;
+            this.cbGender.SelectedIndex = 0;
             this.cbAccess.SelectedIndex = 0;
         }
 
